@@ -13,15 +13,15 @@ namespace Assets.Scripts
 
         public Transform GroundCheck;
         public LayerMask GroundMask;
-        private float _groundDistance = 0.4f;
+        private float _groundDistance = 0.6f;
 
         private Vector3 _velocity;
         private float _gravityConst = -9.81f;
         private float _jumpHeight = 0.0005f;
 
-        private bool _isGrounded;
+        public bool _isGrounded;
 
-        private bool _crouching;
+        public bool _crouching;
         private float _originalHeight;
         private float _crouchHeight;
 
