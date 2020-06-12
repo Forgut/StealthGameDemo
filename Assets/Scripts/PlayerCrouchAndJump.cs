@@ -14,6 +14,7 @@ namespace Assets.Scripts
         private float _speed;
         private float _normallSpeed = 3f;
         private float _crouchSpeed = 1f;
+        private float _runSpeed = 7f;
 
         public Transform LedgeCheckUp;
         public Transform LedgeCheckDown;
@@ -49,6 +50,7 @@ namespace Assets.Scripts
         public void Update() 
         {
             UpdateMovement();
+            UpdateRun();
             UpdateCrouch();
             UpdateLedgeClimb();
             UpdateJump();
@@ -135,6 +137,16 @@ namespace Assets.Scripts
 
             var direction = transform.right * x + transform.forward * z;
             Controller.Move(direction * _speed * Time.deltaTime);
+        }
+
+        private void UpdateRun()
+        {
+            if (Input.GetKey(KeyCode.LeftShift) && !_crouching)
+                _speed = _runSpeed;
+            else
+            {
+                _speed = _crouching ? _crouchSpeed : _normallSpeed;
+            }
         }
     }
 }
